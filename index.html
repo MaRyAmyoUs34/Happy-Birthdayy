@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Meerab 💗</title>
+<style>
+:root {
+--bg-pink: #ffeef2;
+--env-white: #ffffff;
+--accent-pink: #ff8fa3;
+--dark-pink: #ff4d6d;
+}
+
+body {
+background-color: var(--bg-pink);
+font-family: system-ui, -apple-system, sans-serif;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+margin: 0;
+}
+
+#lock-screen {
+background: white;
+padding: 30px;
+border-radius: 20px;
+box-shadow: 0 10px 30px rgba(255, 143, 163, 0.2);
+text-align: center;
+width: 280px;
+box-sizing: border-box;
+}
+
+h2 {
+color: var(--dark-pink);
+margin-top: 0;
+font-size: 18px;
+}
+
+input {
+padding: 12px;
+border: 2px solid var(--accent-pink);
+border-radius: 10px;
+width: 140px;
+text-align: center;
+font-size: 20px;
+outline: none;
+color: var(--dark-pink);
+font-weight: bold;
+}
+
+.envelope-wrapper {
+position: relative;
+cursor: pointer;
+display: none;
+width: 280px;
+height: 180px;
+margin-top: 50px;
+}
+
+.envelope {
+position: absolute;
+width: 280px;
+height: 180px;
+background-color: var(--env-white);
+border-radius: 0 0 10px 10px;
+box-shadow: 0 15px 35px rgba(255, 143, 163, 0.15);
+z-index: 3;
+}
+
+/* Top Flap */
+.envelope-wrapper::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+z-index: 5;
+border-left: 140px solid transparent;
+border-right: 140px solid transparent;
+border-top: 100px solid var(--accent-pink);
+transform-origin: top;
+transition: transform 0.4s ease;
+}
+
+/* Bottom Flap overlay styling */
+.envelope-wrapper::after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+z-index: 4;
+border-left: 140px solid var(--env-white);
+border-right: 140px solid var(--env-white);
+border-bottom: 90px solid #fff0f2;
+border-radius: 0 0 10px 10px;
+}
+
+.heart {
+position: absolute;
+top: 75px;
+left: 125px;
+width: 30px;
+height: 30px;
+background-color: var(--dark-pink);
+transform: rotate(-45deg);
+z-index: 6;
+transition: all 0.3s ease;
+}
+
+.heart::before, .heart::after {
+content: "";
+position: absolute;
+width: 30px;
+height: 30px;
+background-color: var(--dark-pink);
+border-radius: 50%;
+}
+.heart::before { top: -15px; left: 0; }
+.heart::after { left: 15px; top: 0; }
+
+.letter {
+position: absolute;
+bottom: 10px;
+left: 15px;
+width: 250px;
+background-color: #ffffff;
+border-radius: 8px;
+z-index: 2;
+padding: 20px;
+box-sizing: border-box;
+text-align: center;
+transition: transform 0.5s ease;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+font-size: 14px;
+line-height: 1.5;
+color: #4a5568;
+}
+
+/* Open States */
+.envelope-wrapper.open::before {
+transform: rotateX(180deg);
+z-index: 1;
+}
+
+.envelope-wrapper.open .heart {
+opacity: 0;
+transform: scale(0);
+}
+
+.envelope-wrapper.open .letter {
+transform: translateY(-130px);
+z-index: 10;
+box-shadow: 0 10px 25px rgba(255, 77, 109, 0.2);
+border: 2px solid #fff0f2;
+}
+
+.hint {
+font-size: 13px;
+color: var(--dark-pink);
+margin-top: 20px;
+font-weight: bold;
+display: none;
+}
+</style>
+</head>
+<body>
+
+<!-- Enter Secret Key Code Section -->
+<div id="lock-screen">
+<h2>Enter Secret Key 🔐</h2>
+<input type="text" id="pin-input" maxlength="4" placeholder="2708" onkeyup="checkPin()">
+</div>
+
+<!-- The Interactive Envelope Gift Present -->
+<div class="envelope-wrapper" id="gift-envelope" onclick="openEnvelope()">
+<div class="letter">
+<b style="color: var(--dark-pink); font-size: 15px; display:block; margin-bottom:8px;">Happy Birthdayyy Meerab!! 🥳</b>
+thankyou for being my silly side and a sister who i never thought i need this much:):):)):<br>
+<span style="color: var(--dark-pink); font-weight: bold; display:block; margin-top:10px;">I LOVE YOU💗</span>
+</div>
+<div class="envelope"></div>
+<div class="heart"></div>
+</div>
+
+<div class="hint" id="click-hint">✨ Tap the heart seal to open! ✨</div>
+
+<script>
+function checkPin() {
+var inputVal = document.getElementById("pin-input").value;
+
+// Triggers the instant code evaluation
+if (inputVal === "2708") {
+document.getElementById("lock-screen").style.display = "none";
+document.getElementById("gift-envelope").style.display = "block";
+document.getElementById("click-hint").style.display = "block";
+}
+}
+
+function openEnvelope() {
+document.getElementById("gift-envelope").classList.add("open");
+document.getElementById("click-hint").style.opacity = "0";
+}
+</script>
+
+</body>
+</html>
